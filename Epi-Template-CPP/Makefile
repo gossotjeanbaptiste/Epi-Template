@@ -13,8 +13,6 @@ CXX = clang++
 LIB_CRITERION = -lcriterion --coverage
 OBJ = $(SRC:.cpp=.o)
 INCL = -I include/
-SFML_FLAGS = -lsfml-graphics -lsfml-window -lsfml-system
-NCURSES_FLAGS = -lncurses
 
 %.o: %.cpp
 		$(CXX) $(CXXFLAGS) $(INCL) -c $< -o $@
