@@ -14,17 +14,17 @@ LIB_CRITERION = -lcriterion --coverage
 OBJ = $(SRC:.cpp=.o)
 INCL = -I include/
 
+all: $(PROJECT_NAME)
+
+$(PROJECT_NAME): $(OBJ)
+		$(CXX) -o $(PROJECT_NAME) $(OBJ) $(INCL) $(CXXFLAGS)
+
 %.o: %.cpp
 		$(CXX) $(CXXFLAGS) $(INCL) -c $< -o $@
 
 start :
 		mv gitignore.txt .gitignore
 		mv src/project.cpp src/$(PROJECT_NAME).cpp
-
-all: $(PROJECT_NAME)
-
-$(PROJECT_NAME): $(OBJ)
-		$(CXX) -o $(PROJECT_NAME) $(OBJ) $(INCL) $(CXXFLAGS)
 
 clean:
 		rm -f $(OBJ)
