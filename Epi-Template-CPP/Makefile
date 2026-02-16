@@ -7,8 +7,8 @@
 
 PROJECT_NAME = project
 CXXFLAGS = -Wall -Wextra -Werror
-SRC = $(shell find src -name "*.cpp")
-SRC_SEGV = $(shell find src -name "*.cpp")
+SRC = main.cpp $(shell find src -name "*.cpp")
+SRC_SEGV = main.cpp $(shell find src -name "*.cpp")
 CXX = clang++
 LIB_CRITERION = -lcriterion --coverage
 OBJ = $(SRC:.cpp=.o)
@@ -17,11 +17,15 @@ INCL = -I include/
 %.o: %.cpp
 		$(CXX) $(CXXFLAGS) $(INCL) -c $< -o $@
 
+start :
+		mv gitignore.txt .gitignore
+		mv src/project.c src/$(PROJECT_NAME).cpp
+
 
 all: $(PROJECT_NAME)
 
 $(PROJECT_NAME): $(OBJ)
-		$(CXX) -o $(PROJECT_NAME) $(OBJ) $(INCL) $(CXXFLAGS) $(SFML_FLAGS) $(NCURSES_FLAGS) -lm
+		$(CXX) -o $(PROJECT_NAME) $(OBJ) $(INCL) $(CXXFLAGS)
 
 clean:
 		rm -f $(OBJ)
