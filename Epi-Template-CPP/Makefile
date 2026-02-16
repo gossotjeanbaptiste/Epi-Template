@@ -19,8 +19,7 @@ INCL = -I include/
 
 start :
 		mv gitignore.txt .gitignore
-		mv src/project.c src/$(PROJECT_NAME).cpp
-
+		mv src/project.cpp src/$(PROJECT_NAME).cpp
 
 all: $(PROJECT_NAME)
 
