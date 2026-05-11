@@ -38,20 +38,9 @@ fclean: clean
 		rm -f *.gcda
 		rm -f *.out
 		rm -f *#
-		@echo "Everything has been cleaned, do make to have a \
-new libmy and compilation"
+		@echo "Everything has been cleaned"
 
 re: fclean all
-
-cs: fclean
-		clear
-		@echo "All none compliant file for coding style \
-has been cleaned, do make to have a \
-new libmy and compilation"
-		coding-style . .
-		cat coding-style-reports.log
-		rm -f coding-style-reports.log
-
 
 unit_tests: fclean
 		make all
@@ -68,4 +57,4 @@ tests_run: unit_tests
 segfault:
 		$(CXX) -o $(PROJECT_NAME) -g $(SRC_SEGV) $(INCL) $(CXXFLAGS)
 
-.PHONY: cs all clean fclean re
+.PHONY: all clean fclean re
